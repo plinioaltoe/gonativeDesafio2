@@ -11,7 +11,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
 import Lista from "~/components/Lista";
-
+import Header from "~/components/Header";
 import api from "~/services/api";
 
 export default class Repositories extends Component {
@@ -35,6 +35,7 @@ export default class Repositories extends Component {
     const { repositoryList } = this.state;
     const newRepo = [...repositoryList, { id, name, login, avatar_url }];
     await AsyncStorage.setItem("@GithubRepo:repositoryList", newRepo);
+    this.setState({ repositoryList: newRepo });
   };
 
   addRepository = async () => {
@@ -54,7 +55,8 @@ export default class Repositories extends Component {
   };
 
   render() {
-    const { repository } = this.state;
+    const { repository, repositoryList } = this.state;
+    console.tron.log("repos", repositoryList);
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />

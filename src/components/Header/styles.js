@@ -6,12 +6,13 @@ const styles = StyleSheet.create({
   container: {
     height: 54 + getStatusBarHeight(),
     paddingTop: getStatusBarHeight(),
-    borderBottomWidth: 1,
     borderBottomColor: colors.light,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: metrics.basePadding
+    paddingHorizontal: metrics.basePadding,
+    backgroundColor: colors.white,
+    borderBottomWidth: 1
   },
   title: {
     fontSize: 16,
