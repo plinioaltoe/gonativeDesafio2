@@ -14,7 +14,7 @@ import Lista from "~/components/Lista";
 
 import api from "~/services/api";
 
-export default class Issues extends Component {
+export default class Repositories extends Component {
   state = {
     repository: "",
     repositoryList: []
@@ -50,7 +50,7 @@ export default class Issues extends Component {
 
   handleNextPage = id => {
     const { navigation } = this.props;
-    navigation.navigate("Repositories");
+    navigation.navigate("Issues");
   };
 
   render() {
@@ -58,6 +58,7 @@ export default class Issues extends Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
+        <Header title="GitIssues" />
         <View style={styles.form}>
           <TextInput
             style={styles.input}

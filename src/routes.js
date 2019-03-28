@@ -1,12 +1,19 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-import Lista from "~/pages/Lista";
+import Issues from "~/pages/Issues";
+import Repositories from "~/pages/Repositories";
 //import Repositories from "~/pages/Issues";
 
 const Routes = createAppContainer(
-  createSwitchNavigator({
-    Lista
-  })
+  createSwitchNavigator(
+    {
+      Issues,
+      Repositories
+    },
+    {
+      initialRouteName: "Issues"
+    }
+  )
 );
 
 export default Routes;
