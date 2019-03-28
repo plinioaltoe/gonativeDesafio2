@@ -5,10 +5,10 @@ import Header from "~/components/Header";
 
 import styles from "./styles";
 
-const Lista = () => (
+const Repositorios = () => (
   <View>
     <Header title="GitIssues" />
   </View>
 );
 
-export default Lista;
+export default Repositorios;
