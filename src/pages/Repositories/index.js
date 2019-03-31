@@ -50,10 +50,10 @@ export default class Repositories extends Component {
     return data;
   };
 
-  saveRepository = async ({ id, name, organization }) => {
+  saveRepository = async ({ id, name, full_name, organization }) => {
     const { avatar_url, login } = organization;
     const { repositoryList } = this.state;
-    const itemRepo = { id, name, login, avatar_url };
+    const itemRepo = { id, name, login, avatar_url, full_name };
     const newRepo = [...repositoryList, itemRepo];
     await AsyncStorage.setItem(
       "@GithubRepo:repositoryList",
@@ -76,9 +76,12 @@ export default class Repositories extends Component {
     }
   };
 
-  handleNextPage = id => {
+  handleNextPage = full_name => {
     const { navigation } = this.props;
-    navigation.navigate("Issues");
+    navigation.navigate("Issues", {
+      full_name: full_name,
+      other: "0/0"
+    });
   };
 
   render() {

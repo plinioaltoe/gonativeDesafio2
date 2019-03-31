@@ -8,31 +8,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "stretch"
   },
-  form: {
+  bar: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingBottom: metrics.basePadding * 2,
-    margin: metrics.baseMargin,
-    marginBottom: metrics.baseMargin / 2,
-    alignItems: "center",
-    borderBottomColor: colors.light,
-    borderBottomWidth: 1
-  },
-  input: {
-    flex: 1,
-    backgroundColor: colors.white,
-    borderRadius: metrics.baseRadius,
-    borderWidth: 1,
-    borderColor: colors.light,
-    height: 34,
-    paddingHorizontal: metrics.basePadding
+    backgroundColor: colors.light,
+    padding: metrics.basePadding / 2,
+    marginTop: metrics.baseMargin,
+    marginLeft: metrics.baseMargin,
+    marginRight: metrics.baseMargin,
+    paddingRight: metrics.basePadding * 2,
+    borderRadius: metrics.baseRadius
   },
   button: {
     marginLeft: metrics.baseMargin
   },
-  icon: {
-    color: colors.darker
+  textButton: {
+    color: colors.regular
+  },
+  textButtonSelected: {
+    color: colors.black,
+    fontWeight: "bold"
   }
 });
 

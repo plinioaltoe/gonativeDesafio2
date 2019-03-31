@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 50,
-    height: 50
+    height: 50,
+    borderRadius: 25
   },
   content: {
     display: "flex",
@@ -28,10 +29,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold"
   },
-  description: {},
+  description: {
+    opacity: 0.5
+  },
   button: {},
   icon: {
-    color: colors.dark
+    color: colors.dark,
+    opacity: 0.5
   }
 });
 

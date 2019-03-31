@@ -1,9 +1,4 @@
-import {
-  createAppContainer,
-  createSwitchNavigator,
-  createMaterialTopTabNavigator,
-  createTabNavigator
-} from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import Issues from "~/pages/Issues";
 import Repositories from "~/pages/Repositories";

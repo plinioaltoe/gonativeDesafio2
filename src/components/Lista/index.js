@@ -12,7 +12,8 @@ class Lista extends Component {
         id: PropTypes.number,
         title: PropTypes.string,
         description: PropTypes.string,
-        avatar_url: PropTypes.string
+        avatar_url: PropTypes.string,
+        full_name: PropTypes.string
       })
     ).isRequired,
     handleNextPage: PropTypes.func.isRequired,
