@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingBottom: metrics.basePadding * 2,
     margin: metrics.baseMargin,
+    marginBottom: metrics.baseMargin / 2,
     alignItems: "center",
     borderBottomColor: colors.light,
     borderBottomWidth: 1
@@ -28,15 +29,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: metrics.basePadding
   },
   button: {
-    marginLeft: metrics.baseMargin
+    marginLeft: metrics.baseMargin,
+    width: 15
   },
   icon: {
     color: colors.darker
   },
-  line: {
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
-    margin: metrics.baseMargin
+  activityIndicator: {
+    color: colors.darker
+  },
+  error: {
+    textAlign: "center",
+    paddingTop: metrics.basePadding,
+    color: colors.danger
   }
 });
 

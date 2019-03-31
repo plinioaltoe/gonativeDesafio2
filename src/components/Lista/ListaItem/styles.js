@@ -3,18 +3,26 @@ import { colors, metrics } from "~/styles";
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    padding: metrics.basePadding,
     backgroundColor: colors.white,
     borderRadius: metrics.baseRadius,
-    padding: metrics.basePadding,
-    marginHorizontal: metrics.baseMargin * 2,
-    marginTop: metrics.baseMargin
+    marginHorizontal: metrics.baseMargin,
+    marginTop: metrics.baseMargin / 2
   },
-  image: {},
+  image: {
+    width: 50,
+    height: 50
+  },
   content: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row"
+    alignItems: "flex-start",
+    padding: metrics.basePadding,
+    width: 230
   },
   title: {
     fontSize: 14,

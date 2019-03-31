@@ -11,53 +11,66 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
 import Lista from "~/components/Lista";
-
+import Header from "~/components/Header";
 import api from "~/services/api";
 
 export default class Issues extends Component {
   state = {
-    repository: "",
-    repositoryList: []
+    issue: "react-community/react-navigation",
+    issueList: []
   };
 
   componentDidMount = () => {
-    const repositoryList = AsyncStorage.getItem("@GithubRepo:repositoryList");
-    this.setState({ repositoryList });
+    this.refreshList();
   };
 
-  checkUserExists = async repository => {
-    const repo = await api.get(`/repos/${repository}`);
-    return repo;
+  refreshList = async () => {
+    const repos = await AsyncStorage.getItem("@GithubRepo:issueList");
+    if (repos) {
+      const issueList = JSON.parse(repos);
+      this.setState({ issueList });
+    }
   };
 
-  saveRepository = async ({ id, name, organization }) => {
+  checkUserExists = async issue => {
+    const { data } = await api.get(`/repos/${issue}`);
+    return data;
+  };
+
+  saveIssue = async ({ id, name, organization }) => {
     const { avatar_url, login } = organization;
-    const { repositoryList } = this.state;
-    const newRepo = [...repositoryList, { id, name, login, avatar_url }];
-    await AsyncStorage.setItem("@GithubRepo:repositoryList", newRepo);
+    const { issueList } = this.state;
+    const itemRepo = { id, name, login, avatar_url };
+    const newRepo = [...issueList, itemRepo];
+    await AsyncStorage.setItem(
+      "@GithubRepo:issueList",
+      JSON.stringify(newRepo)
+    );
+    this.setState({ issue: "" });
   };
 
-  addRepository = async () => {
-    const { repository } = this.state;
+  addIssue = async () => {
+    const { issue } = this.state;
 
     try {
-      const repo = await this.checkUserExists(repository);
-      await this.saveRepository(repo);
+      const repo = await this.checkUserExists(issue);
+      await this.saveIssue(repo);
     } catch (error) {
-      console.tron.log("Usuário inexistente");
+      console.tron.log("Erro ao buscar repositório", error);
     }
   };
 
   handleNextPage = id => {
     const { navigation } = this.props;
-    navigation.navigate("Repositories");
+    navigation.navigate("Issues");
   };
 
   render() {
-    const { repository } = this.state;
+    const { issue, issueList } = this.state;
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
+        <Header title="GitIssues" />
         <View style={styles.form}>
           <TextInput
             style={styles.input}
@@ -65,16 +78,16 @@ export default class Issues extends Component {
             autoCorrect={false}
             placeholder="Adicionar novo repositório"
             underlineColorAndroid="transparent"
-            value={repository}
+            value={issue}
             onChangeText={text => {
-              this.setState({ repository: text });
+              this.setState({ issue: text });
             }}
           />
-          <TouchableOpacity style={styles.button} onPress={this.addRepository}>
+          <TouchableOpacity style={styles.button} onPress={this.addIssue}>
             <Icon name="plus" size={16} style={styles.icon} />
           </TouchableOpacity>
         </View>
-        <Lista />
+        <Lista list={issueList} handleNextPage={this.handleNextPage} />
       </View>
     );
   }
